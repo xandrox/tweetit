@@ -1,0 +1,15 @@
+.DS_Store
+bin/
+gen/
+lib/
+gwt-unitCache/
+de.adorsys.cssp.gui/
+target/
+.classpath
+.project
+.settings/
+.idea
+*.iml
+classes/
+xcuserdata
+out
