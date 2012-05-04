@@ -19,7 +19,7 @@ public class ApplicationViewImpl extends ReverseCompositeView<ApplicationPresent
 
     private static RootViewUiBinder uiBinder = GWT.create( RootViewUiBinder.class );
     
-    @UiField
+    @UiField(provided=true)
     FollowingsViewImpl followings;
 
     interface RootViewUiBinder extends UiBinder<Widget, ApplicationViewImpl> {
@@ -29,7 +29,8 @@ public class ApplicationViewImpl extends ReverseCompositeView<ApplicationPresent
     DivElement output;
 
     @Inject
-    public ApplicationViewImpl(Messages messages) {
+    public ApplicationViewImpl(Messages messages, FollowingsViewImpl followingsViewImpl) {
+    	followings = followingsViewImpl;
         initWidget( uiBinder.createAndBindUi( this ) );
         output.setInnerText(messages.testMessage("hallo"));
     }

@@ -8,7 +8,7 @@ import com.mvp4g.client.presenter.PresenterInterface;
 import com.mvp4g.client.view.ReverseViewInterface;
 
 import de.adorsys.tweetitgui.TweetitguiEventBus;
-import de.adorsys.tweetitgui.model.User;
+import de.adorsys.tweetitgui.model.FollowingUser;
 
 public interface FollowingsView extends IsWidget, ReverseViewInterface<FollowingsView.FollowingsPresenter> {
 	
@@ -16,6 +16,6 @@ public interface FollowingsView extends IsWidget, ReverseViewInterface<Following
 		
 	}
 
-	void setValue(List<User> users);
+	void setValue(List<FollowingUser> users);
 
 }

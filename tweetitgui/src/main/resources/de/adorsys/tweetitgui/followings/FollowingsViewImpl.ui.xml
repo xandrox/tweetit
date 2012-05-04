@@ -6,6 +6,6 @@
 	>
 	<ui:with field='msg' type='de.adorsys.tweetitgui.Messages' />
 	<g:HTMLPanel>
-		<mod:UserTableWidget ui:field="userTableWidget" />
+		<mod:FollowingUserTableWidget ui:field="userTableWidget" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

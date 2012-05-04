@@ -3,8 +3,9 @@ package de.adorsys.tweetitgui.widgets;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.adorsys.tweetitgui.model.User;
+import de.adorsys.tweetitgui.model.FollowingUser;
 
+import com.google.gwt.cell.client.CheckboxCell;
 import com.google.gwt.cell.client.EditTextCell;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
@@ -19,83 +20,83 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 
-public class UserTableWidget extends Composite implements
-		LeafValueEditor<List<User>> {
+public class FollowingUserTableWidget extends Composite implements
+		LeafValueEditor<List<FollowingUser>> {
 
 	private static final UserListUiBinder UI_BINDER = GWT
 			.create(UserListUiBinder.class);
 
-	interface UserListUiBinder extends UiBinder<Widget, UserTableWidget> {
+	interface UserListUiBinder extends UiBinder<Widget, FollowingUserTableWidget> {
 	}
 
-	private ListDataProvider<User> dataProvider = new ListDataProvider<User>();
+	private ListDataProvider<FollowingUser> dataProvider = new ListDataProvider<FollowingUser>();
 
 	@Override
-	public void setValue(List<User> value) {
+	public void setValue(List<FollowingUser> value) {
 		dataProvider.setList(value);
+		dataProvider.flush();
 	}
 
 	@Override
-	public List<User> getValue() {
-		dataProvider.flush();
-		return new ArrayList<User>(dataProvider.getList());
+	public List<FollowingUser> getValue() {
+		return new ArrayList<FollowingUser>(dataProvider.getList());
 	}
 
 	@UiField
-	CellTable<User> table;
+	CellTable<FollowingUser> table;
 
 	@UiField(provided = true)
 	SimplePager pager = new SimplePager(TextLocation.CENTER,
 			(SimplePager.Resources) GWT.create(SimplePager.Resources.class),
 			false, 0, true);
 
-	public UserTableWidget() {
+	public FollowingUserTableWidget() {
 		initWidget(UI_BINDER.createAndBindUi(this));
-		table.addColumn(new Column<User, String>(new EditTextCell()) {
+		table.addColumn(new Column<FollowingUser, String>(new EditTextCell()) {
 			{
-				setFieldUpdater(new FieldUpdater<User, String>() {
+				setFieldUpdater(new FieldUpdater<FollowingUser, String>() {
 					@Override
-					public void update(int index, User object, String value) {
+					public void update(int index, FollowingUser object, String value) {
 						object.setUserId(String.valueOf(value));
 					}
 				});
 			}
 
 			@Override
-			public String getValue(User object) {
+			public String getValue(FollowingUser object) {
 				return String.valueOf(object.getUserId());
 			}
 
 		}, "UserId");
-		table.addColumn(new Column<User, String>(new EditTextCell()) {
+		table.addColumn(new Column<FollowingUser, String>(new EditTextCell()) {
 			{
-				setFieldUpdater(new FieldUpdater<User, String>() {
+				setFieldUpdater(new FieldUpdater<FollowingUser, String>() {
 					@Override
-					public void update(int index, User object, String value) {
+					public void update(int index, FollowingUser object, String value) {
 						object.setNickname(String.valueOf(value));
 					}
 				});
 			}
 
 			@Override
-			public String getValue(User object) {
+			public String getValue(FollowingUser object) {
 				return String.valueOf(object.getNickname());
 			}
 
 		}, "Nickname");
-		table.addColumn(new Column<User, String>(new EditTextCell()) {
+		table.addColumn(new Column<FollowingUser, Boolean>(new CheckboxCell()) {
 			{
-				setFieldUpdater(new FieldUpdater<User, String>() {
+				setFieldUpdater(new FieldUpdater<FollowingUser, Boolean>() {
 					@Override
-					public void update(int index, User object, String value) {
-						object.setFollowUser(Boolean.valueOf(value));
+					public void update(int index, FollowingUser object, Boolean value) {
+						object.setFollowUser(value);
 					}
 				});
 			}
 
 			@Override
-			public String getValue(User object) {
-				return String.valueOf(object.getFollowUser());
+			public Boolean getValue(FollowingUser object) {
+				return object.getFollowUser();
 			}
 
 		}, "FollowUser");

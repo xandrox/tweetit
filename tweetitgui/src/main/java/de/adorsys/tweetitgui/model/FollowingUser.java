@@ -1,6 +1,6 @@
 package de.adorsys.tweetitgui.model;
 
-public class User {
+public class FollowingUser {
 	
 	private String userId;
 	
@@ -10,7 +10,7 @@ public class User {
 	
 	
 
-	public User(String userId, String nickname, Boolean followUser) {
+	public FollowingUser(String userId, String nickname, Boolean followUser) {
 		super();
 		this.userId = userId;
 		this.nickname = nickname;
@@ -19,7 +19,7 @@ public class User {
 	
 	
 
-	public User() {
+	public FollowingUser() {
 		super();
 	}
 
