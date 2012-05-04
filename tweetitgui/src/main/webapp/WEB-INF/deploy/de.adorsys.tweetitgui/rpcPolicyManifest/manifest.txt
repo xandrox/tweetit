@@ -1,0 +1,2 @@
+# Module de.adorsys.tweetitgui
+# RPC service class, partial path of RPC policy file

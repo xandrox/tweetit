@@ -8,5 +8,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>tweetit.server</module>
+    <module>tweetitgui</module>
   </modules>
 </project>
