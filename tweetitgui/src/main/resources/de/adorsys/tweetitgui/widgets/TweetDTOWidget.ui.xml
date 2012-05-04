@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:com.google.gwt.editor.ui.client"
+	xmlns:date="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:mod="urn:import:de.adorsys.tweetitgui.widgets">
+	<ui:with field='msg' type='de.adorsys.tweetitgui.Messages' />
+	<g:HTMLPanel>
+		<h2>
+			<ui:text from='{msg.TweetDTO}' />
+		</h2>
+		<e:ValueBoxEditorDecorator ui:field='userId'>
+			<e:valuebox>
+				<g:TextBox />
+			</e:valuebox>
+		</e:ValueBoxEditorDecorator>
+		<label>
+			<ui:text from='{msg.TweetDTO_message}' />
+		</label>
+		<br />
+		<e:ValueBoxEditorDecorator ui:field='message'>
+			<e:valuebox>
+				<g:TextBox />
+			</e:valuebox>
+		</e:ValueBoxEditorDecorator>
+	</g:HTMLPanel>
+</ui:UiBinder> 

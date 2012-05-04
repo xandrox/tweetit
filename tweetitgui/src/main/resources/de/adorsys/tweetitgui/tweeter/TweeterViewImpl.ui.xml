@@ -3,17 +3,11 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:e="urn:import:com.google.gwt.editor.ui.client"
 	xmlns:mod="urn:import:de.adorsys.tweetitgui.widgets"
-	xmlns:followings="urn:import:de.adorsys.tweetitgui.followings"
 	>
 	<ui:with field='msg' type='de.adorsys.tweetitgui.Messages' />
 	<g:HTMLPanel>
-		<h1>Hello Worldasdasds!</h1>
-		<div style="float:left;">
-			<g:SimplePanel ui:field="body"/>
-		</div>
-		<div style="float:left;">
-			<followings:FollowingsViewImpl ui:field="followings"/>
-		</div>
-		<div ui:field="output"></div>
+		<h1>The Tweeter</h1>
+		<mod:TweetDTOWidget ui:field="tweetWidget"/>
+		<g:Button ui:field="postMsg" text="post"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

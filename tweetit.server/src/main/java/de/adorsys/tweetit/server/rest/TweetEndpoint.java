@@ -1,5 +1,6 @@
 package de.adorsys.tweetit.server.rest;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -10,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.ws.rs.*;
 import de.adorsys.tweetit.server.model.Tweet;
+import de.adorsys.tweetit.server.model.TweetDTO;
+import de.adorsys.tweetit.server.model.User;
 
 @Stateless
 @Path("/tweets")
@@ -20,11 +23,16 @@ public class TweetEndpoint
 
    @POST
    @Consumes("application/json")
-   public Tweet create(Tweet entity)
+   public TweetDTO create(TweetDTO tweet)
    {
-      em.joinTransaction();
-      em.persist(entity);
-      return entity;
+	  User user = em.find(User.class, tweet.getUserId());
+	  Tweet tweetJPA = new Tweet();
+	  tweetJPA.setCdat(new Date());
+	  tweetJPA.setEmitter(user);
+	  tweetJPA.setMessage(tweet.getMessage());
+      em.persist(tweetJPA);
+      tweet.setCdat(String.valueOf(tweetJPA.getCdat().getTime()));
+      return tweet;
    }
 
    @GET

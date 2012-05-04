@@ -21,6 +21,9 @@ public class ApplicationViewImpl extends ReverseCompositeView<ApplicationPresent
     
     @UiField(provided=true)
     FollowingsViewImpl followings;
+    
+    @UiField
+    SimplePanel body;
 
     interface RootViewUiBinder extends UiBinder<Widget, ApplicationViewImpl> {
     }
@@ -34,5 +37,9 @@ public class ApplicationViewImpl extends ReverseCompositeView<ApplicationPresent
         initWidget( uiBinder.createAndBindUi( this ) );
         output.setInnerText(messages.testMessage("hallo"));
     }
+
+	public SimplePanel getBody() {
+		return body;
+	}
 
 }
